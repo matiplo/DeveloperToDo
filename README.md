@@ -13,5 +13,17 @@ DeveloperToDo constists of three layers:
 - **Interface adapter layer.** Connection layer containiing presenters for each Android view.
 - **Business logic layer.** No framemowrk-specific code, solving given problems. Layer contains interactors (use cases).
 
-### Used libraries ###
+### Used libraries and important Android concepts ###
+
+- [ButterKnife](http://jakewharton.github.io/butterknife/)
+- RecyclerView
+- [Recycler View Multiselect](https://github.com/bignerdranch/recyclerview-multiselect) library. Enables reproducing multi-choice selection, known from ListView, for RecyclerView
+- ActionMode with Contextual action bar
+- [DFlow](https://github.com/Raizlabs/DBFlow) - powerful ORM Android database library
+
+### Notes ###
+
+- **Tested different layout conceptions: Activity vs Fragment.** MainActivity directly manages its layout and handles logic. On the other hand, AddEditActivity is only a navigation conainer for AddEditFragment that describes layout and handles logic.
+- **Tested different configuraion changes strategies.** MainActivity has android:configChanges="orientation|screenSize"  set in manifest. AddEditActivity and AddEdit fragment use Bundles to recreate state on configuration changes.
+- **Changed default behaviour of ActionMode.** Action mode usually activates after long click on an item. In this appllication Contextual Action Bar appears after simple click since I think is more intuitive here.
 
