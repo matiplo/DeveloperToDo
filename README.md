@@ -19,7 +19,7 @@ DeveloperToDo constists of three layers:
 - RecyclerView
 - [Recycler View Multiselect](https://github.com/bignerdranch/recyclerview-multiselect) library. Enables reproducing multi-choice selection, known from ListView, for RecyclerView
 - ActionMode with Contextual action bar
-- [DFlow](https://github.com/Raizlabs/DBFlow) - powerful ORM Android database library
+- [DBFlow](https://github.com/Raizlabs/DBFlow) - powerful ORM Android database library
 
 ### Notes ###
 
