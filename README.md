@@ -7,7 +7,7 @@ DeveloperToDo is an app that enables monitoring of work progress during everyday
 
 ### Architecture ###
 
-The appliation utilizes [Clean Architecture approach.](https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html) It becomes more and more popular and Google considers it [one of possible architectures](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/) for Android application nowadays.
+The application utilizes [Clean Architecture approach.](https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html) It becomes more and more popular and Google considers it [one of possible architectures](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/) for Android application nowadays.
 DeveloperToDo constists of three layers:
 - **Implemenation layer.** Here goes everything framework specific: presentation layer (Android activities, fragments, adapters etc.), storage (here: DBFlow), networking code.
 - **Interface adapter layer.** Connection layer containiing presenters for each Android view.
