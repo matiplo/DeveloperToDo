@@ -1,7 +1,7 @@
 package com.example.ppp.developertodo.implementation.ui.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
@@ -10,6 +10,9 @@ import com.example.ppp.developertodo.R;
 import butterknife.ButterKnife;
 
 public abstract class AbstractBaseActivity extends AppCompatActivity {
+
+    protected static final int NO_ID = -1;
+    protected static final String ID = "ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

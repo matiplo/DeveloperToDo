@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.ppp.developertodo.R;
 import com.example.ppp.developertodo.adapter.presenters.implementations.MainPresenter;
@@ -27,13 +26,8 @@ import butterknife.BindView;
 
 public class MainActivity extends AbstractBaseActivity implements IMainView {
 
-    public static final int ADD_REQUEST = 1;
-    public static final int EDIT_REQUEST = 2;
-
-    public static final int NO_ID = -1;
-
-    public static final String ID = "ID";
-
+    protected static final int ADD_REQUEST = 1;
+    protected static final int EDIT_REQUEST = 2;
 
     @BindView(R.id.rvContacts)
     RecyclerView mRecyclerView;
@@ -100,9 +94,8 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
     }
 
 
-
     public void onClickAdd() {
-        starAddEditActivity(NO_ID,ADD_REQUEST);
+        starAddEditActivity(NO_ID, ADD_REQUEST);
     }
 
     public void onClickEdit(int id) {
@@ -111,8 +104,10 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
 
     private void starAddEditActivity(int id, int requestType){
         Intent intent = new Intent(this, AddEditActivity.class);
+
         intent.putExtra(ID, id);
         startActivityForResult(intent, requestType);
+
     }
 
     public void onClickDelete(final List<Integer> list) {

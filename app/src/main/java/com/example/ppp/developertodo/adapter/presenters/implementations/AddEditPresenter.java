@@ -3,7 +3,6 @@ package com.example.ppp.developertodo.adapter.presenters.implementations;
 import com.example.ppp.developertodo.adapter.presenters.base.AbstractPresenter;
 import com.example.ppp.developertodo.adapter.presenters.interfaces.IAddEditPresenter;
 import com.example.ppp.developertodo.implementation.ui.interfaces.IAddEditView;
-import com.example.ppp.developertodo.implementation.ui.interfaces.IView;
 import com.example.ppp.developertodo.logic.executors.IExecutor;
 import com.example.ppp.developertodo.logic.executors.IMainThread;
 import com.example.ppp.developertodo.logic.interactors.implementations.GetTodoByIdInteractor;
@@ -24,6 +23,7 @@ public class AddEditPresenter extends AbstractPresenter implements IAddEditPrese
     public AddEditPresenter(IExecutor executor, IMainThread mainThread, IAddEditView view, ITodoRepository repo) {
         super(executor, mainThread, repo);
         this.mView=view;
+
     }
 
 
