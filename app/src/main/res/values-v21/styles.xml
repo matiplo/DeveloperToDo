@@ -1,9 +1,19 @@
 <resources>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+    <!--<style name="AppTheme.NoActionBar">-->
+    <!--<item name="windowActionBar">false</item>-->
+    <!--<item name="windowNoTitle">true</item>-->
+    <!--<item name="windowActionModeOverlay">true</item>-->
+    <!--<item name="actionModeStyle">@style/CustomActionMode</item>-->
+
+    <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+    <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+    <!--</style>-->
+
+
+    <!--<style name="CustomActionMode" parent="@style/Widget.AppCompat.ActionMode">-->
+    <!--<item name="background">@color/colorPrimary</item>-->
+    <!--</style>-->
+
+
 </resources>

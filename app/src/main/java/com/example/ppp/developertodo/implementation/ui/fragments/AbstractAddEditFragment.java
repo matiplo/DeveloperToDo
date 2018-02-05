@@ -32,6 +32,7 @@ public abstract class AbstractAddEditFragment extends Fragment implements IAddEd
     @BindView(R.id.estimated_time_edit_text)
     EditText estimatedTime;
     @BindView(R.id.new_task_edit_text)
+
     EditText newTask;
     @BindView(R.id.save_button)
     Button saveButton;
@@ -134,7 +135,7 @@ public abstract class AbstractAddEditFragment extends Fragment implements IAddEd
     }
 
 
-    protected int getLayoutResourceId() {
+    private int getLayoutResourceId() {
         return R.layout.fragment_add_edit;
     }
 

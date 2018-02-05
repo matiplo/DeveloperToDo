@@ -90,13 +90,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mActionMode.invalidate();
 
             if (mActionMode != null && mMultiSelector.getSelectedPositions().size() == 0) {
-                mActionMode.finish();
+                finishActionMode();
 
             }
 
         }
     }
 
+
+    public void finishActionMode() {
+        mActionMode.finish();
+    }
 
     private ActionMode mActionMode;
     private MultiSelector mMultiSelector = new MultiSelector();
@@ -130,12 +134,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 
-            if (item.getItemId() == R.id.action_edit)
-                ((MainActivity) context).onClickEdit(getSelectedItemsIds().get(0));
-            else if (item.getItemId() == R.id.action_delete)
-                ((MainActivity) context).onClickDelete(getSelectedItemsIds());
+            switch (item.getItemId()) {
+                case R.id.action_edit:
+                    ((MainActivity) context).onClickEdit(getSelectedItemsIds().get(0));
+                    break;
+                case R.id.action_delete:
+                    ((MainActivity) context).onClickDelete(getSelectedItemsIds());
+                    break;
+            }
 
-            mActionMode.finish();
+//            if (item.getItemId() == R.id.action_edit)
+//                ((MainActivity) context).onClickEdit(getSelectedItemsIds().get(0));
+//            else if (item.getItemId() == R.id.action_delete)
+//                ((MainActivity) context).onClickDelete(getSelectedItemsIds());
+
+
             return true;
         }
 

@@ -29,7 +29,7 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
     protected static final int ADD_REQUEST = 1;
     protected static final int EDIT_REQUEST = 2;
 
-    @BindView(R.id.rvContacts)
+    @BindView(R.id.rvTodos)
     RecyclerView mRecyclerView;
 
     private RecyclerViewAdapter mAdapter;
@@ -118,6 +118,7 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         mPresenter.deleteTodosById(list);
+
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -137,8 +138,19 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
 
     @Override
     public void onTodosDeled() {
+        mAdapter.finishActionMode();
         mPresenter.getAllTodos();
         showMesssage(R.string.todos_deleted);
+    }
+
+    public void onTodoAdded() {
+        showMesssage(R.string.todo_added);
+    }
+
+    @Override
+    public void onTodoEdited() {
+        mAdapter.finishActionMode();
+        showMesssage(R.string.todo_updated);
     }
 
 
@@ -148,9 +160,9 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
         if (resultCode == Activity.RESULT_OK) {
 
             if (requestCode == ADD_REQUEST)
-                showMesssage(R.string.todo_added);
+                onTodoAdded();
             else if (requestCode == EDIT_REQUEST)
-                showMesssage(R.string.todo_updated);
+                onTodoEdited();
         }
 
     }
