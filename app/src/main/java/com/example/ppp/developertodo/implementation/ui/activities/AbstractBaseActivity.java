@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.ppp.developertodo.R;
+import com.example.ppp.developertodo.implementation.networking.APIService;
 
 import butterknife.ButterKnife;
 
@@ -13,6 +14,10 @@ public abstract class AbstractBaseActivity extends AppCompatActivity {
 
     protected static final int NO_ID = -1;
     protected static final String ID = "ID";
+
+    protected APIService getAPIService() {
+        return APIService.getInstance(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +33,9 @@ public abstract class AbstractBaseActivity extends AppCompatActivity {
 
     protected void showMesssage(int stringId) {
         Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void showMessage(String string) {
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
     }
 }

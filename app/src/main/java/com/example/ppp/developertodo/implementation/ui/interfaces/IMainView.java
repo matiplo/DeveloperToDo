@@ -17,9 +17,16 @@ public interface IMainView extends IView {
 
     void onClickDelete(List<Integer> list);
 
+    void onClickDownload();
+
     void onTodosDeled();
 
     void onTodoAdded();
 
     void onTodoEdited();
+
+    void onTodoDownloaded(Todo todo);
+
+
+
 }

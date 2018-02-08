@@ -41,6 +41,8 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
+
+
     }
 
     @Override
@@ -70,6 +72,10 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
         }
         if (id == R.id.action_add) {
             onClickAdd();
+            return true;
+        }
+        if (id == R.id.action_download) {
+            onClickDownload();
             return true;
         }
 
@@ -137,6 +143,12 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
     }
 
     @Override
+    public void onClickDownload() {
+        getAPIService().downloadNextTodo();
+    }
+
+
+    @Override
     public void onTodosDeled() {
         mAdapter.finishActionMode();
         mPresenter.getAllTodos();
@@ -151,6 +163,12 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
     public void onTodoEdited() {
         mAdapter.finishActionMode();
         showMesssage(R.string.todo_updated);
+    }
+
+    @Override
+    public void onTodoDownloaded(Todo todo) {
+        showMessage("Downloaded: NAME: " + todo.getName() + " DURATION: " + todo.getDuration());
+
     }
 
 
