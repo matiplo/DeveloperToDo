@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.example.ppp.developertodo.R;
 import com.example.ppp.developertodo.adapter.presenters.implementations.MainPresenter;
 import com.example.ppp.developertodo.adapter.presenters.interfaces.IMainPresenter;
+import com.example.ppp.developertodo.implementation.networking.APIService;
 import com.example.ppp.developertodo.implementation.storage.repository.TodoRepository;
 import com.example.ppp.developertodo.implementation.threading.MainThread;
 import com.example.ppp.developertodo.implementation.ui.adapters.RecyclerViewAdapter;
@@ -24,7 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends AbstractBaseActivity implements IMainView {
+public class MainActivity extends AbstractBaseActivity implements IMainView, APIService.onNetworkInteractionListener {
 
     protected static final int ADD_REQUEST = 1;
     protected static final int EDIT_REQUEST = 2;
@@ -142,7 +143,7 @@ public class MainActivity extends AbstractBaseActivity implements IMainView {
                 .show();
     }
 
-    @Override
+
     public void onClickDownload() {
         getAPIService().downloadNextTodo();
     }

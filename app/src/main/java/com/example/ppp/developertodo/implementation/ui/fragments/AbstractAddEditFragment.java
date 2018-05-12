@@ -100,11 +100,7 @@ public abstract class AbstractAddEditFragment extends Fragment implements IAddEd
         estimatedTime.setText(Integer.toString(todo.getDuration()));
     }
 
-    public interface OnFragmentInteractionListener {
-        void onActivityFinish();
 
-        int getIdFromIntent();
-    }
 
     public AbstractAddEditFragment() {
         // Required empty public constructor
@@ -139,7 +135,11 @@ public abstract class AbstractAddEditFragment extends Fragment implements IAddEd
         return R.layout.fragment_add_edit;
     }
 
+    public interface OnFragmentInteractionListener {
+        void onActivityFinish();
 
+        int getIdFromIntent();
+    }
 
     @Override
     public void onAttach(Context context) {

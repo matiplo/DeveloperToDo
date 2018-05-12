@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.ppp.developertodo.implementation.networking.converter.NetworkConverter;
 import com.example.ppp.developertodo.implementation.networking.model.TodoDownloaded;
-import com.example.ppp.developertodo.implementation.ui.activities.MainActivity;
+import com.example.ppp.developertodo.logic.model.Todo;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,30 +19,42 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIService {
 
     private static APIService instance = null;
-    private static Context context = null;
+    private static onNetworkInteractionListener mListener = null;
 
-    private static APIInterface apiInterface = null;
-    private static Retrofit retrofit = null;
+    private APIInterface apiInterface = null;
     private static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
 
-    private static int counter = 0;
+    private int counter = 0;
 
     public static APIService getInstance(Context context) {
 
-        instance = new APIService(context);
+        if (instance == null) {
+            instance = new APIService();
+        }
+
+        if (context instanceof onNetworkInteractionListener) {
+            mListener = (onNetworkInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement onNetworkInteractionListener");
+        }
 
         return instance;
     }
 
 
-    private APIService(Context context) {
+    private APIService() {
 
 
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         apiInterface = retrofit.create(APIInterface.class);
-        this.context = context;
 
+
+    }
+
+    public interface onNetworkInteractionListener {
+        void onTodoDownloaded(Todo todo);
     }
 
     public void downloadNextTodo() {
@@ -53,7 +65,7 @@ public class APIService {
             public void onResponse(Call<TodoDownloaded> call, Response<TodoDownloaded> response) {
                 TodoDownloaded todoDownloaded = response.body();
 
-                ((MainActivity) context).onTodoDownloaded(NetworkConverter.convertToLogicModel(todoDownloaded));
+                mListener.onTodoDownloaded(NetworkConverter.convertToLogicModel(todoDownloaded));
 
             }
 
